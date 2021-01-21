@@ -16,23 +16,23 @@ let transporter = nodemailer.createTransport({
 
 const sender = async (to, subject, text) => {
   const from = 'noreply@swiftcryptohub.com';
-  await transporter.sendMail({
+  return await transporter.sendMail({
     from, to, subject, text
   });
 }
 
-const sendWelcomeMail = (email, name) => {
+const sendWelcomeMail = async (email, name) => {
   const subject = "Thanks for joining in!";
   const text = `Welcome to the app, ${ name }. let me know how you get along with the app.`;
 
-  sender(email, subject, text);
+  return await sender(email, subject, text);
 }
 
-const sendCancellationMail = (email, name) => {
+const sendCancellationMail = async (email, name) => {
   const subject = "Sorry to see you go";
   const text = `Goodbye, ${ name }. I hope to see you back sometime soon`;
 
-  sender(email, subject, text);
+  return await sender(email, subject, text);
 }
 
 module.exports = {
