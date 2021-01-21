@@ -25,14 +25,14 @@ const sendWelcomeMail = async (email, name) => {
   const subject = "Thanks for joining in!";
   const text = `Welcome to the app, ${ name }. let me know how you get along with the app.`;
 
-  await sender(email, subject, text);
+  sender(email, subject, text);
 }
 
 const sendCancellationMail = async (email, name) => {
   const subject = "Sorry to see you go";
   const text = `Goodbye, ${ name }. I hope to see you back sometime soon`;
 
-  await sender(email, subject, text);
+  sender(email, subject, text);
 }
 
 module.exports = {
