@@ -1,11 +1,11 @@
 const nodemailer = require('nodemailer');
 
-const user = 'noreply@swiftcryptohub.com';
+const user = process.env.SITE_MAIL;
 const pass = process.env.MAIL_PASSWORD;
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
-  host: 'mail.swiftcryptohub.com',
+  host: process.env.MAIL_HOST,
   port: 26,
   secure: false, // true for 465, false for other ports
   auth: {user, pass},
@@ -15,7 +15,7 @@ let transporter = nodemailer.createTransport({
 });
 
 const sender = async (to, subject, text) => {
-  const from = 'noreply@swiftcryptohub.com';
+  const from = process.env.SITE_MAIL;
   await transporter.sendMail({
     from, to, subject, text
   });

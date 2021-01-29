@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+mongoose.Schema.Types.Boolean.convertToFalse = new Set([false, 'false']);
+mongoose.Schema.Types.Boolean.convertToTrue = new Set([true, 'true']);
+
 const taskSchema = new mongoose.Schema(
   {
     description: {
@@ -9,7 +12,7 @@ const taskSchema = new mongoose.Schema(
     },
     completed: {
       type: Boolean,
-      default: false,
+      default: false
     },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
@@ -21,6 +24,7 @@ const taskSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
 
 const Task = mongoose.model('Task', taskSchema);
 
